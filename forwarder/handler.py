@@ -20,6 +20,6 @@ def handle(req):
     upstream["attachments"].append({"JSON data": req})
     upstream["text"] = "Event from GitLab"
 
-    slack_res = requests.post(url, json=p)
+    slack_res = requests.post(url, json=upstream)
 
     return str(slack_res.status_code)
