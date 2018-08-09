@@ -15,7 +15,12 @@ def handle(req):
 
     p = json.loads(req)
     sys.stderr.write(req)
-    sys.stderr.write(os.environ)
+
+    env_data=""
+    for key in os.environ.keys():
+        env_data=env_data + key+"="+os.environ[key] + "\n"
+
+    sys.stderr.write(env_data)
 
     upstream = {}
     upstream["attachments"] = []
