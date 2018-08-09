@@ -9,12 +9,14 @@ def handle(req):
         req (str): request body
     """
 
-    url = ""
-    with open("/var/openfaas/secrets/incoming-webhook-url") as f:
-        url = f.read().strip()
+    url = get_secret("incoming-webhook-url")
 
     p = json.loads(req)
     sys.stderr.write(req)
+
+    if get_secret("verify-token") != os.getenv("X-Gitlab-Token", ""):
+        sys.stderr.write("Invalid X-Gitlab-Token")
+        sys.exit(1)       
 
     env_data=""
     for key in os.environ.keys():
@@ -30,3 +32,8 @@ def handle(req):
     slack_res = requests.post(url, json=upstream)
 
     return str(slack_res.status_code)
+
+
+def get_secret(key)
+    with open("/var/openfaas/secrets/")+key as f:
+        return f.read().strip()
