@@ -1,0 +1,14 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  forwarder:
+    lang: python3
+    handler: ./forwarder
+    image: forwarder
+    environment:
+      combine_output: false
+      write_debug: true
+    secrets:
+      - gitlab-secrets
