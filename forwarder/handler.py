@@ -14,7 +14,7 @@ def handle(req):
     p = json.loads(req)
     sys.stderr.write(req)
 
-    if get_secret("verify-token") != os.getenv("X-Gitlab-Token", ""):
+    if get_secret("verify-token") != os.getenv("Http_X_Gitlab_Token", ""):
         sys.stderr.write("Invalid X-Gitlab-Token")
         sys.exit(1)       
 
