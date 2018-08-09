@@ -1,6 +1,7 @@
 import requests
 import json
 import sys
+import os
 
 def handle(req):
     """handle a request to the function
@@ -14,6 +15,7 @@ def handle(req):
 
     p = json.loads(req)
     sys.stderr.write(req)
+    sys.stderr.write(os.environ)
 
     upstream = {}
     upstream["attachments"] = []
