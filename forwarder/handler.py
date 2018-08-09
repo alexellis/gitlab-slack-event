@@ -13,7 +13,7 @@ def handle(req):
         url = f.read().strip()
 
     p = json.loads(req)
-    sys.stderr.write(p)
+    sys.stderr.write(req)
 
     upstream = {}
     upstream["attachments"] = []
