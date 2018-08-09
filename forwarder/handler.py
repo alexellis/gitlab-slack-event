@@ -10,7 +10,7 @@ def handle(req):
 
     url = ""
     with open("/var/openfaas/secrets/incoming-webhook-url") as f:
-        url = f.read()
+        url = f.read().strip()
 
     p = json.loads(req)
     sys.stderr.write(p)
