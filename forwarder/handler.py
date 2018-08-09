@@ -9,7 +9,7 @@ def handle(req):
     """
 
     url = ""
-    with open("/var/openfaas/secrets/alexellis-incoming-webhook-url") as f:
+    with open("/var/openfaas/secrets/incoming-webhook-url") as f:
         url = f.read()
 
     p = json.loads(req)
