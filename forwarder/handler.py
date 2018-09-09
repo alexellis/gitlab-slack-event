@@ -35,5 +35,5 @@ def handle(req):
 
 
 def get_secret(key):
-    with open("/var/openfaas/secrets/")+key as f:
+    with open("/var/openfaas/secrets/"+key) as f:
         return f.read().strip()
