@@ -34,6 +34,6 @@ def handle(req):
     return str(slack_res.status_code)
 
 
-def get_secret(key)
+def get_secret(key):
     with open("/var/openfaas/secrets/")+key as f:
         return f.read().strip()
